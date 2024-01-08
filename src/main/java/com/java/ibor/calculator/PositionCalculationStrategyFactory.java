@@ -18,10 +18,10 @@ public class PositionCalculationStrategyFactory {
         // Add more mappings as needed for other trade types
     }
 
-    public PositionCalculationStrategy createStrategy(String tradeType) {
-        PositionCalculationStrategy strategy = strategyMap.get(tradeType.toLowerCase());
+    public PositionCalculationStrategy createStrategy(String assetType) {
+        PositionCalculationStrategy strategy = strategyMap.get(assetType.toLowerCase());
         if (strategy == null) {
-            throw new IllegalArgumentException("Unsupported trade type: " + tradeType);
+            throw new IllegalArgumentException("Unsupported trade type: " + assetType);
         }
         return strategy;
     }
