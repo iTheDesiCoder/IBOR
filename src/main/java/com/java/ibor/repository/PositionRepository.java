@@ -1,9 +1,12 @@
 package com.java.ibor.repository;
 
 import com.java.ibor.entity.Position;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 
+@Repository
 public class PositionRepository {
 
     private static final String DB_URL = "jdbc:mysql://your-database-host:your-database-port/your-database-name";

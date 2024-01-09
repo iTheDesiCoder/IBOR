@@ -7,9 +7,14 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class PositionCalculator {
-    public Position calculatePosition(Position newPosition, Position existingPosition) {
 
-        PositionCalculationStrategyFactory strategyFactory = new PositionCalculationStrategyFactory();
+    private final PositionCalculationStrategyFactory strategyFactory;
+
+    public PositionCalculator(PositionCalculationStrategyFactory strategyFactory) {
+        this.strategyFactory = strategyFactory;
+    }
+
+    public Position calculatePosition(Position newPosition, Position existingPosition) {
         PositionCalculationStrategy strategy = strategyFactory.createStrategy(newPosition.getAssetType());
         return strategy.calculatePosition(newPosition, existingPosition);
     }

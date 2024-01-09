@@ -26,6 +26,13 @@ import java.util.Map;
 @EnableKafka
 @Configuration
 public class TradeConsumer {
+
+    private final TradeProcessor processor ;
+
+    public TradeConsumer(TradeProcessor processor) {
+        this.processor = processor;
+    }
+
     @Bean
     public ConsumerFactory<String, String> consumerFactory() {
         Map<String, Object> props = new HashMap<>();
@@ -47,7 +54,7 @@ public class TradeConsumer {
     public void listen(ConsumerRecord<String, String> record) {
         System.out.println("Received Message in group myGroup: " + record.value());
 
-        TradeProcessor processor = new TradeProcessor();
+
         processor.process(record.value());
     }
 }

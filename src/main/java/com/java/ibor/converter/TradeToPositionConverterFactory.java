@@ -1,9 +1,13 @@
 package com.java.ibor.converter;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 @Component
 public class TradeToPositionConverterFactory {
+
+
+    
     public TradeToPositionConverter createConverter(String assetType) {
         switch (assetType.toLowerCase()) {
             case "equity":
